@@ -433,7 +433,7 @@ function renderOlvidos(){
     <div class="olvido-card">
       <h4>🏆 Top 5 personas con más olvidos</h4>
       <div class="olvido-top">
-        ${topPersonas.map(([n,v])=>`<div class="olvido-top-row"><span>${n}</span><span>${v} días</span></div>`).join('')}
+        ${topPersonas.map(([n,v])=>`<div class="olvido-top-row"><span>${n}</span><span>${v.cnt} días</span></div>`).join('')}
       </div>
     </div>
     <div class="olvido-card">
