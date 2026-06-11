@@ -10,95 +10,121 @@
   --azul:#1a3a6b;--azul2:#0f5fa5;--verde:#5cb85c;--verde-claro:#b6dc5a;
   --gris-bg:#f0f4fa;--blanco:#fff;--texto:#1a2a3a;--naranja:#ef9f27;--rojo:#e24b4a;
 }
-body{background:var(--gris-bg);color:var(--texto);font-size:13px;min-height:100vh}
+body{background:var(--gris-bg);color:var(--texto);font-size:13px;min-height:100vh;display:flex;flex-direction:column}
 
 /* HEADER */
-.hdr{background:var(--azul);padding:10px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hdr{background:var(--azul);padding:10px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.3);flex-shrink:0}
 .hdr-logo{width:46px;height:46px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
 .hdr-logo img{width:42px;height:42px;object-fit:contain}
 .hdr-title h1{color:#fff;font-size:18px;font-weight:700;letter-spacing:.4px}
 .hdr-title p{color:#b6dc5a;font-size:11px;margin-top:1px}
-.hdr-nav{margin-left:auto;display:flex;gap:8px}
+.hdr-nav{margin-left:auto;display:flex;gap:8px;align-items:center}
 .btn-nav{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:background .2s}
 .btn-nav:hover{background:rgba(255,255,255,.22)}
 .btn-nav.active{background:#b6dc5a;color:#2d4a00;border-color:#b6dc5a}
 
+/* TABS */
+.tabs{background:#fff;border-bottom:2px solid #d0ddf0;padding:0 20px;display:flex;gap:0;flex-shrink:0}
+.tab{padding:11px 20px;font-size:12px;font-weight:600;color:#666;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;display:flex;align-items:center;gap:6px}
+.tab:hover{color:var(--azul);background:#f0f4fa}
+.tab.active{color:var(--azul);border-bottom-color:var(--azul);background:#f8faff}
+.tab .badge-tab{background:#e24b4a;color:#fff;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:700}
+.tab .badge-tab.green{background:#5cb85c}
+
 /* FILTERS BAR */
-.fbar{background:#fff;border-bottom:2px solid var(--verde-claro);padding:12px 20px;display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;box-shadow:0 2px 4px rgba(0,0,0,.06)}
-.fg{display:flex;flex-direction:column;gap:3px;min-width:120px;flex:1}
+.fbar{background:#fff;border-bottom:2px solid var(--verde-claro);padding:10px 20px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;flex-shrink:0}
+.fg{display:flex;flex-direction:column;gap:3px;min-width:110px;flex:1}
 .fg label{font-size:10px;font-weight:700;color:#2d4a00;text-transform:uppercase;letter-spacing:.4px}
-.fg select,.fg input[type=date]{border:1.5px solid #7aab1a;border-radius:16px;padding:5px 12px;font-size:12px;background:#fff;color:#2d4a00;font-weight:500;cursor:pointer;width:100%}
+.fg select,.fg input[type=date]{border:1.5px solid #7aab1a;border-radius:16px;padding:4px 10px;font-size:11px;background:#fff;color:#2d4a00;font-weight:500;cursor:pointer;width:100%}
 .fg input[type=date]{color:var(--texto)}
-.btn-clear{background:var(--azul);color:#fff;border:none;border-radius:16px;padding:6px 16px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;align-self:flex-end}
+.btn-clear{background:var(--azul);color:#fff;border:none;border-radius:16px;padding:5px 14px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;align-self:flex-end}
 .btn-clear:hover{background:var(--azul2)}
-.btn-export{background:#27ae60;color:#fff;border:none;border-radius:16px;padding:6px 16px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;align-self:flex-end}
+.btn-export{background:#27ae60;color:#fff;border:none;border-radius:16px;padding:5px 14px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;align-self:flex-end}
 .btn-export:hover{background:#1e8449}
 
 /* STATS ROW */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;padding:12px 20px 6px}
-.stat-card{background:#fff;border-radius:8px;padding:8px 12px;border:1px solid #d0ddf0;display:flex;align-items:center;gap:10px}
-.stat-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;padding:10px 20px 6px;flex-shrink:0}
+.stat-card{background:#fff;border-radius:8px;padding:8px 12px;border:1px solid #d0ddf0;display:flex;align-items:center;gap:8px}
+.stat-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
 .si-azul{background:#e6f1fb;color:#0f5fa5}
 .si-rojo{background:#fcebeb;color:#a32d2d}
 .si-verde{background:#eaf3de;color:#3b6d11}
 .si-naranja{background:#faeeda;color:#854f0b}
-.stat-info .val{font-size:18px;font-weight:700;color:var(--azul);line-height:1}
+.si-warn{background:#fff3cd;color:#856404}
+.stat-info .val{font-size:17px;font-weight:700;color:var(--azul);line-height:1}
 .stat-info .lbl{font-size:10px;color:#666;margin-top:1px}
 
 /* TABLE SECTION */
-.tbl-section{padding:6px 20px 20px}
+.tbl-section{padding:6px 20px 16px;flex:1;display:flex;flex-direction:column}
 .tbl-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.tbl-header h2{font-size:13px;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.3px}
+.tbl-header h2{font-size:12px;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.3px;display:flex;align-items:center;gap:6px}
 .tbl-count{font-size:11px;color:#888;background:#e8eef8;border-radius:10px;padding:2px 10px}
-.tbl-wrap{background:#fff;border-radius:10px;border:1px solid #d0ddf0;overflow:hidden}
-.tbl-scroll{overflow-x:auto;max-height:calc(100vh - 320px);overflow-y:auto}
-table{width:100%;border-collapse:collapse;font-size:11px;min-width:900px}
+.tbl-wrap{background:#fff;border-radius:10px;border:1px solid #d0ddf0;overflow:hidden;flex:1}
+.tbl-scroll{overflow-x:auto;max-height:calc(100vh - 360px);overflow-y:auto}
+table{width:100%;border-collapse:collapse;font-size:11px;min-width:850px}
 thead tr{background:var(--azul);position:sticky;top:0;z-index:2}
-thead th{color:#fff;padding:8px 10px;text-align:left;font-weight:600;white-space:nowrap;font-size:11px}
+thead th{color:#fff;padding:7px 9px;text-align:left;font-weight:600;white-space:nowrap;font-size:10px}
 thead th.center{text-align:center}
+thead th.sortable{cursor:pointer}
+thead th.sortable:hover{background:var(--azul2)}
 tbody tr{border-bottom:1px solid #eef3fa;transition:background .1s}
 tbody tr:hover{background:#f0f6ff}
 tbody tr.tardio-row{background:#fff8f8}
 tbody tr.tardio-row:hover{background:#ffeaea}
-tbody td{padding:6px 10px;white-space:nowrap;color:var(--texto)}
+tbody tr.olvido-row{background:#fffbf0}
+tbody tr.olvido-row:hover{background:#fff3cd}
+tbody tr.critico-row{background:#fff0f0}
+tbody tr.critico-row:hover{background:#ffe0e0}
+tbody td{padding:5px 9px;white-space:nowrap;color:var(--texto)}
 tbody td.center{text-align:center}
-.badge{border-radius:8px;padding:2px 8px;font-size:10px;font-weight:600;display:inline-block}
+.badge{border-radius:8px;padding:2px 7px;font-size:10px;font-weight:600;display:inline-block}
 .b-red{background:#fcebeb;color:#a32d2d}
 .b-green{background:#eaf3de;color:#2d6b11}
 .b-blue{background:#e6f1fb;color:#185fa5}
 .b-amber{background:#faeeda;color:#854f0b}
+.b-warn{background:#fff3cd;color:#856404}
 .b-gray{background:#f0f0f0;color:#666}
 .b-dept-taller{background:#e6f1fb;color:#185fa5}
 .b-dept-campo{background:#eaf3de;color:#2d6b11}
 .b-dept-admin{background:#faeeda;color:#854f0b}
 .b-dept-trans{background:#f3ecfb;color:#6b2d85}
 .hora-cell{font-family:'Courier New',monospace;font-size:11px;font-weight:600;color:#1a3a6b}
+.hora-miss{font-family:'Courier New',monospace;font-size:11px;font-weight:700;color:#e24b4a;background:#fff0f0;border-radius:4px;padding:1px 5px}
 .min-cell{font-weight:700;color:#e24b4a}
-.no-data{text-align:center;padding:60px 20px;color:#aaa}
-.no-data svg{width:48px;height:48px;margin-bottom:12px;opacity:.3}
-.no-data p{font-size:13px}
 
-/* RESUMEN POR PERSONA (panel lateral colapsable) */
-.persona-panel{display:none;position:fixed;top:0;right:0;width:340px;height:100vh;background:#fff;border-left:2px solid var(--azul);box-shadow:-4px 0 20px rgba(0,0,0,.15);z-index:100;overflow-y:auto;flex-direction:column}
-.persona-panel.open{display:flex}
-.pp-hdr{background:var(--azul);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.pp-hdr h3{color:#fff;font-size:14px;font-weight:700}
-.pp-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0 4px;line-height:1}
-.pp-body{padding:16px;flex:1}
-.pp-name{font-size:16px;font-weight:700;color:var(--azul);margin-bottom:4px}
-.pp-dept{font-size:11px;color:#888;margin-bottom:12px}
-.pp-stat{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eef3fa;font-size:12px}
-.pp-stat span:first-child{color:#666}
-.pp-stat span:last-child{font-weight:600;color:var(--azul)}
-.pp-subtitle{font-size:11px;font-weight:700;text-transform:uppercase;color:var(--azul);letter-spacing:.4px;margin:14px 0 6px}
-.pp-mini-tbl{width:100%;font-size:11px;border-collapse:collapse}
-.pp-mini-tbl td{padding:4px 6px;border-bottom:1px solid #eef3fa}
-.pp-mini-tbl tr:hover td{background:#f0f6ff}
+/* OLVIDOS SUMMARY CARDS */
+.olvidos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;padding:0 20px 10px}
+.olvido-card{background:#fff;border-radius:8px;border:2px solid #ffc107;padding:10px 14px}
+.olvido-card h4{font-size:11px;font-weight:700;color:#856404;text-transform:uppercase;margin-bottom:6px}
+.olvido-card .big{font-size:24px;font-weight:700;color:#e24b4a}
+.olvido-card .sub{font-size:10px;color:#888;margin-top:2px}
+.olvido-top{font-size:11px;margin-top:6px;border-top:1px solid #eee;padding-top:6px}
+.olvido-top-row{display:flex;justify-content:space-between;padding:2px 0;font-size:10px}
+.olvido-top-row span:first-child{color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
+.olvido-top-row span:last-child{font-weight:700;color:#e24b4a;flex-shrink:0;margin-left:8px}
+
+/* PANEL LATERAL */
 .overlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,.3);z-index:99}
 .overlay.open{display:block}
+.persona-panel{display:none;position:fixed;top:0;right:0;width:360px;height:100vh;background:#fff;border-left:2px solid var(--azul);box-shadow:-4px 0 20px rgba(0,0,0,.15);z-index:100;overflow-y:auto;flex-direction:column}
+.persona-panel.open{display:flex;flex-direction:column}
+.pp-hdr{background:var(--azul);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.pp-hdr h3{color:#fff;font-size:13px;font-weight:700}
+.pp-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1}
+.pp-body{padding:14px;flex:1}
+.pp-name{font-size:15px;font-weight:700;color:var(--azul);margin-bottom:3px}
+.pp-dept{font-size:11px;color:#888;margin-bottom:10px}
+.pp-stat{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #eef3fa;font-size:11px}
+.pp-stat span:first-child{color:#666}
+.pp-stat span:last-child{font-weight:600;color:var(--azul)}
+.pp-subtitle{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--azul);letter-spacing:.4px;margin:12px 0 5px}
+.pp-mini-tbl{width:100%;font-size:10px;border-collapse:collapse}
+.pp-mini-tbl th{background:#f0f4fa;padding:4px 6px;text-align:left;color:var(--azul);font-weight:600}
+.pp-mini-tbl td{padding:4px 6px;border-bottom:1px solid #eef3fa}
+.pp-mini-tbl tr.has-issue td{background:#fffbf0}
 
 /* FOOTER */
-.footer{background:var(--azul);padding:8px 20px;display:flex;gap:20px;align-items:center;margin-top:auto}
+.footer{background:var(--azul);padding:7px 20px;display:flex;gap:20px;align-items:center;flex-shrink:0}
 .footer span{color:#aaccee;font-size:10px}
 .footer strong{color:#b6dc5a}
 </style>
@@ -107,12 +133,10 @@ tbody td.center{text-align:center}
 
 <!-- HEADER -->
 <div class="hdr">
-  <div class="hdr-logo">
-    <img src="logo.png" alt="Logo empresa">
-  </div>
+  <div class="hdr-logo"><img src="logo.png" alt="Logo empresa"></div>
   <div class="hdr-title">
     <h1>REGISTROS DETALLADOS</h1>
-    <p>Entradas, salidas y tiempos por empleado y día</p>
+    <p>Entradas, salidas, tardíos y marcas faltantes</p>
   </div>
   <div class="hdr-nav">
     <a href="index.html" class="btn-nav">← Dashboard</a>
@@ -120,108 +144,86 @@ tbody td.center{text-align:center}
   </div>
 </div>
 
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('asistencia')" id="tab-asistencia">
+    📋 Asistencia completa <span class="badge-tab green" id="cnt-asistencia">0</span>
+  </div>
+  <div class="tab" onclick="switchTab('olvidos')" id="tab-olvidos">
+    ⚠️ Marcas faltantes <span class="badge-tab" id="cnt-olvidos">0</span>
+  </div>
+</div>
+
 <!-- FILTERS -->
 <div class="fbar">
-  <div class="fg">
-    <label>Mes</label>
+  <div class="fg"><label>Mes</label>
     <select id="fMes">
-      <option value="">Todos los meses</option>
+      <option value="">Todos</option>
       <option>Enero</option><option>Febrero</option><option>Marzo</option>
       <option>Abril</option><option>Mayo</option><option>Junio</option>
     </select>
   </div>
-  <div class="fg">
-    <label>Día de la semana</label>
+  <div class="fg"><label>Día</label>
     <select id="fDia">
       <option value="">Todos</option>
       <option>Lunes</option><option>Martes</option><option>Miércoles</option>
       <option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option>
     </select>
   </div>
-  <div class="fg">
-    <label>Departamento</label>
+  <div class="fg"><label>Departamento</label>
     <select id="fDept">
       <option value="">Todos</option>
       <option>Administración</option><option>Campo</option>
       <option>Taller</option><option>Transformadores</option>
     </select>
   </div>
-  <div class="fg">
-    <label>Empleado</label>
+  <div class="fg"><label>Empleado</label>
     <select id="fPers"><option value="">Todos</option></select>
   </div>
-  <div class="fg">
-    <label>Solo con tardíos</label>
+  <div class="fg" id="fg-tardio"><label>Tardíos</label>
     <select id="fTardio">
-      <option value="">Todos los registros</option>
+      <option value="">Todos</option>
       <option value="1">Solo con tardío</option>
       <option value="0">Sin tardío</option>
     </select>
   </div>
-  <div class="fg" style="min-width:130px">
-    <label>Fecha desde</label>
+  <div class="fg" id="fg-olvido" style="display:none"><label>Marcas faltantes</label>
+    <select id="fOlvido">
+      <option value="">Todas</option>
+      <option value="Entrada Mañana">Entrada Mañana</option>
+      <option value="Salida Mañana">Salida Mañana</option>
+      <option value="Entrada Tarde">Entrada Tarde</option>
+      <option value="Salida Tarde">Salida Tarde</option>
+    </select>
+  </div>
+  <div class="fg" style="min-width:120px"><label>Desde</label>
     <input type="date" id="fDesde" min="2026-01-01" max="2026-06-30">
   </div>
-  <div class="fg" style="min-width:130px">
-    <label>Fecha hasta</label>
+  <div class="fg" style="min-width:120px"><label>Hasta</label>
     <input type="date" id="fHasta" min="2026-01-01" max="2026-06-30">
   </div>
   <button class="btn-clear" onclick="clearFilters()">↺ Limpiar</button>
-  <button class="btn-export" onclick="exportCSV()">↓ Exportar CSV</button>
+  <button class="btn-export" onclick="exportCSV()">↓ CSV</button>
 </div>
 
 <!-- STATS -->
-<div class="stats">
-  <div class="stat-card">
-    <div class="stat-icon si-azul">📋</div>
-    <div class="stat-info"><div class="val" id="sTot">0</div><div class="lbl">Registros mostrados</div></div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon si-rojo">⏰</div>
-    <div class="stat-info"><div class="val" id="sTardio">0</div><div class="lbl">Con tardío</div></div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon si-naranja">🌅</div>
-    <div class="stat-info"><div class="val" id="sMinMa">0</div><div class="lbl">Min tardío mañana</div></div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon si-naranja">🌆</div>
-    <div class="stat-info"><div class="val" id="sMinTa">0</div><div class="lbl">Min tardío tarde</div></div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon si-rojo">⚠️</div>
-    <div class="stat-info"><div class="val" id="sTotal">0</div><div class="lbl">Total min tardíos</div></div>
-  </div>
+<div class="stats" id="statsRow"></div>
+
+<!-- OLVIDOS SUMMARY (solo en tab olvidos) -->
+<div id="olvidosSummary" style="display:none">
+  <div class="olvidos-grid" id="olvidosGrid"></div>
 </div>
 
 <!-- TABLE -->
 <div class="tbl-section">
   <div class="tbl-header">
-    <h2>📅 Registro diario de asistencia</h2>
+    <h2 id="tblTitle">📅 Registro diario de asistencia</h2>
     <span class="tbl-count" id="tblCount">0 registros</span>
   </div>
   <div class="tbl-wrap">
     <div class="tbl-scroll">
       <table id="mainTable">
-        <thead>
-          <tr>
-            <th onclick="sortBy('fecha')" style="cursor:pointer">Fecha ↕</th>
-            <th onclick="sortBy('dia')" style="cursor:pointer">Día ↕</th>
-            <th onclick="sortBy('n')" style="cursor:pointer">Empleado ↕</th>
-            <th>Departamento</th>
-            <th class="center">Entrada Mañana</th>
-            <th class="center">Salida Mañana</th>
-            <th class="center">Entrada Tarde</th>
-            <th class="center">Salida Tarde</th>
-            <th class="center">Ret. Mañana</th>
-            <th class="center">Ret. Tarde</th>
-            <th class="center">Min Mañana</th>
-            <th class="center">Min Tarde</th>
-            <th class="center" onclick="sortBy('tt')" style="cursor:pointer">Total Min ↕</th>
-            <th class="center">H. Extra Sáb.</th>
-            <th class="center">Detalle</th>
-          </tr>
-        </thead>
+        <thead id="theadRow"></thead>
         <tbody id="tbody"></tbody>
       </table>
     </div>
@@ -245,170 +247,280 @@ tbody td.center{text-align:center}
 </div>
 
 <script src="data.js"></script>
+<script src="sin_marca.js"></script>
 <script>
-let filtered = [];
+let currentTab = 'asistencia';
+let filteredAsis = [];
+let filteredOlv = [];
 let sortCol = 'fecha';
 let sortAsc = true;
 
-const DEPT_COLORS = {
-  'Taller':'b-dept-taller','Campo':'b-dept-campo',
-  'Administración':'b-dept-admin','Transformadores':'b-dept-trans'
-};
-const DIAS_ORD = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+const DEPT_COLORS = {'Taller':'b-dept-taller','Campo':'b-dept-campo','Administración':'b-dept-admin','Transformadores':'b-dept-trans'};
 
 // Populate person filter
 const names = [...new Set(FULL_DATA.map(r=>r.n))].sort();
 const selPers = document.getElementById('fPers');
-names.forEach(n => {
-  const o = document.createElement('option');
-  o.value = n; o.textContent = n;
-  selPers.appendChild(o);
-});
+names.forEach(n => { const o=document.createElement('option'); o.value=n; o.textContent=n; selPers.appendChild(o); });
 
-function getFilters(){
+function switchTab(tab){
+  currentTab = tab;
+  ['asistencia','olvidos'].forEach(t => {
+    document.getElementById('tab-'+t).classList.toggle('active', t===tab);
+  });
+  document.getElementById('fg-tardio').style.display = tab==='asistencia' ? '' : 'none';
+  document.getElementById('fg-olvido').style.display = tab==='olvidos' ? '' : 'none';
+  document.getElementById('olvidosSummary').style.display = tab==='olvidos' ? '' : 'none';
+  applyFilters();
+}
+
+function getF(){
   return {
     mes: document.getElementById('fMes').value,
     dia: document.getElementById('fDia').value,
     dept: document.getElementById('fDept').value,
     pers: document.getElementById('fPers').value,
     tardio: document.getElementById('fTardio').value,
+    olvido: document.getElementById('fOlvido').value,
     desde: document.getElementById('fDesde').value,
     hasta: document.getElementById('fHasta').value
   };
 }
 
 function applyFilters(){
-  const f = getFilters();
-  filtered = FULL_DATA.filter(r => {
-    if(f.mes && r.mes !== f.mes) return false;
-    if(f.dia && r.dia !== f.dia) return false;
-    if(f.dept && r.d !== f.dept) return false;
-    if(f.pers && r.n !== f.pers) return false;
-    if(f.tardio === '1' && r.tt <= 0) return false;
-    if(f.tardio === '0' && r.tt > 0) return false;
-    if(f.desde && r.fecha < f.desde) return false;
-    if(f.hasta && r.fecha > f.hasta) return false;
+  const f = getF();
+  // Always filter both datasets
+  filteredAsis = FULL_DATA.filter(r => {
+    if(f.mes && r.mes!==f.mes) return false;
+    if(f.dia && r.dia!==f.dia) return false;
+    if(f.dept && r.d!==f.dept) return false;
+    if(f.pers && r.n!==f.pers) return false;
+    if(f.tardio==='1' && r.tt<=0) return false;
+    if(f.tardio==='0' && r.tt>0) return false;
+    if(f.desde && r.fecha<f.desde) return false;
+    if(f.hasta && r.fecha>f.hasta) return false;
     return true;
   });
+  filteredOlv = SIN_MARCA.filter(r => {
+    if(f.mes && r.mes!==f.mes) return false;
+    if(f.dia && r.dia!==f.dia) return false;
+    if(f.dept && r.d!==f.dept) return false;
+    if(f.pers && r.n!==f.pers) return false;
+    if(f.olvido && !r.f.includes(f.olvido)) return false;
+    if(f.desde && r.fecha<f.desde) return false;
+    if(f.hasta && r.fecha>f.hasta) return false;
+    return true;
+  });
+
+  document.getElementById('cnt-asistencia').textContent = filteredAsis.length.toLocaleString('es-CO');
+  document.getElementById('cnt-olvidos').textContent = filteredOlv.length.toLocaleString('es-CO');
+
   sortData();
-  render();
+  if(currentTab==='asistencia') renderAsistencia();
+  else renderOlvidos();
 }
 
 function sortBy(col){
-  if(sortCol === col) sortAsc = !sortAsc;
-  else { sortCol = col; sortAsc = true; }
+  if(sortCol===col) sortAsc=!sortAsc; else {sortCol=col;sortAsc=true;}
   sortData();
-  render();
+  if(currentTab==='asistencia') renderAsistencia();
+  else renderOlvidos();
 }
 
 function sortData(){
-  filtered.sort((a,b) => {
-    let va = a[sortCol] ?? '', vb = b[sortCol] ?? '';
-    if(typeof va === 'number') return sortAsc ? va-vb : vb-va;
-    return sortAsc ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
+  const arr = currentTab==='asistencia' ? filteredAsis : filteredOlv;
+  arr.sort((a,b)=>{
+    let va=a[sortCol]??'', vb=b[sortCol]??'';
+    if(typeof va==='number') return sortAsc?va-vb:vb-va;
+    return sortAsc?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));
   });
 }
 
 function fmt(n){ return Math.round(n).toLocaleString('es-CO'); }
+function horaOk(h){ return h ? `<span class="hora-cell">${h}</span>` : '<span style="color:#ccc">—</span>'; }
+function horaMiss(h){ return h ? `<span class="hora-cell">${h}</span>` : '<span class="hora-miss">✗ FALTA</span>'; }
 
-function horaCell(h){
-  if(!h) return '<span style="color:#ccc">—</span>';
-  return `<span class="hora-cell">${h}</span>`;
-}
+function renderAsistencia(){
+  document.getElementById('tblTitle').textContent = '📅 Registro diario de asistencia';
+  const data = filteredAsis;
+  const conT = data.filter(r=>r.tt>0).length;
+  const sumMa = data.reduce((s,r)=>s+r.mm,0);
+  const sumTa = data.reduce((s,r)=>s+r.mt,0);
+  const sumTot = data.reduce((s,r)=>s+r.tt,0);
 
-function render(){
-  const tot = filtered.length;
-  const conTardio = filtered.filter(r=>r.tt>0).length;
-  const sumMa = filtered.reduce((s,r)=>s+r.mm,0);
-  const sumTa = filtered.reduce((s,r)=>s+r.mt,0);
-  const sumTot = filtered.reduce((s,r)=>s+r.tt,0);
+  document.getElementById('statsRow').innerHTML = `
+    <div class="stat-card"><div class="stat-icon si-azul">📋</div><div class="stat-info"><div class="val">${fmt(data.length)}</div><div class="lbl">Registros</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-rojo">⏰</div><div class="stat-info"><div class="val">${fmt(conT)}</div><div class="lbl">Con tardío</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-naranja">🌅</div><div class="stat-info"><div class="val">${fmt(sumMa)}</div><div class="lbl">Min tardío mañana</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-naranja">🌆</div><div class="stat-info"><div class="val">${fmt(sumTa)}</div><div class="lbl">Min tardío tarde</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-rojo">⚠️</div><div class="stat-info"><div class="val">${fmt(sumTot)}</div><div class="lbl">Total min tardíos</div></div></div>`;
 
-  document.getElementById('sTot').textContent = fmt(tot);
-  document.getElementById('sTardio').textContent = fmt(conTardio);
-  document.getElementById('sMinMa').textContent = fmt(sumMa);
-  document.getElementById('sMinTa').textContent = fmt(sumTa);
-  document.getElementById('sTotal').textContent = fmt(sumTot);
-  document.getElementById('tblCount').textContent = fmt(tot) + ' registros';
+  document.getElementById('tblCount').textContent = fmt(data.length)+' registros';
+  document.getElementById('theadRow').innerHTML = `<tr>
+    <th class="sortable" onclick="sortBy('fecha')">Fecha ↕</th>
+    <th class="sortable" onclick="sortBy('dia')">Día ↕</th>
+    <th class="sortable" onclick="sortBy('n')">Empleado ↕</th>
+    <th>Departamento</th>
+    <th class="center">Entrada Mañana</th>
+    <th class="center">Salida Mañana</th>
+    <th class="center">Entrada Tarde</th>
+    <th class="center">Salida Tarde</th>
+    <th class="center">Ret. M</th>
+    <th class="center">Ret. T</th>
+    <th class="center">Min M</th>
+    <th class="center">Min T</th>
+    <th class="center sortable" onclick="sortBy('tt')">Total ↕</th>
+    <th class="center">H.Extra</th>
+    <th class="center">Ver</th>
+  </tr>`;
 
+  const shown = data.slice(0,500);
   const tbody = document.getElementById('tbody');
-  if(tot === 0){
-    tbody.innerHTML = `<tr><td colspan="15" class="no-data"><p>No hay registros para los filtros seleccionados</p></td></tr>`;
-    return;
-  }
+  if(!data.length){ tbody.innerHTML=`<tr><td colspan="15" style="text-align:center;padding:40px;color:#aaa">No hay registros para los filtros seleccionados</td></tr>`; return; }
 
-  // Show max 500 rows for performance
-  const shown = filtered.slice(0, 500);
   tbody.innerHTML = shown.map(r => {
-    const hasTardio = r.tt > 0;
-    const deptClass = DEPT_COLORS[r.d] || 'b-gray';
-    const trClass = hasTardio ? 'tardio-row' : '';
-    return `<tr class="${trClass}">
+    const dc = DEPT_COLORS[r.d]||'b-gray';
+    const tr = r.tt>0 ? 'tardio-row' : '';
+    return `<tr class="${tr}">
       <td><strong>${r.fecha}</strong></td>
-      <td>${r.dia || '—'}</td>
-      <td style="font-weight:600;min-width:160px">${r.n}</td>
-      <td><span class="badge ${deptClass}">${r.d}</span></td>
-      <td class="center">${horaCell(r.em)}</td>
-      <td class="center">${horaCell(r.sm)}</td>
-      <td class="center">${horaCell(r.et)}</td>
-      <td class="center">${horaCell(r.st)}</td>
-      <td class="center">${r.rm ? '<span class="badge b-red">Sí</span>' : '<span class="badge b-green">No</span>'}</td>
-      <td class="center">${r.rt ? '<span class="badge b-red">Sí</span>' : '<span class="badge b-green">No</span>'}</td>
-      <td class="center">${r.mm > 0 ? `<span class="min-cell">${r.mm}</span>` : '0'}</td>
-      <td class="center">${r.mt > 0 ? `<span class="min-cell">${r.mt}</span>` : '0'}</td>
-      <td class="center">${hasTardio ? `<span class="badge b-red">${r.tt}</span>` : '<span style="color:#aaa">0</span>'}</td>
-      <td class="center">${r.es ? '<span class="badge b-amber">Sí</span>' : '—'}</td>
-      <td class="center"><button onclick="showPanel('${encodeURIComponent(r.n)}')" style="background:var(--azul);color:#fff;border:none;border-radius:8px;padding:3px 10px;font-size:10px;cursor:pointer;font-weight:600">Ver</button></td>
+      <td>${r.dia||'—'}</td>
+      <td style="font-weight:600;min-width:150px">${r.n}</td>
+      <td><span class="badge ${dc}">${r.d}</span></td>
+      <td class="center">${horaOk(r.em)}</td>
+      <td class="center">${horaOk(r.sm)}</td>
+      <td class="center">${horaOk(r.et)}</td>
+      <td class="center">${horaOk(r.st)}</td>
+      <td class="center">${r.rm?'<span class="badge b-red">Sí</span>':'<span class="badge b-green">No</span>'}</td>
+      <td class="center">${r.rt?'<span class="badge b-red">Sí</span>':'<span class="badge b-green">No</span>'}</td>
+      <td class="center">${r.mm>0?`<span class="min-cell">${r.mm}</span>`:'0'}</td>
+      <td class="center">${r.mt>0?`<span class="min-cell">${r.mt}</span>`:'0'}</td>
+      <td class="center">${r.tt>0?`<span class="badge b-red">${r.tt}</span>`:'<span style="color:#aaa">0</span>'}</td>
+      <td class="center">${r.es?'<span class="badge b-amber">Sí</span>':'—'}</td>
+      <td class="center"><button onclick="showPanel('${encodeURIComponent(r.n)}')" style="background:var(--azul);color:#fff;border:none;border-radius:8px;padding:3px 9px;font-size:10px;cursor:pointer;font-weight:600">Ver</button></td>
     </tr>`;
   }).join('');
+  if(data.length>500) tbody.innerHTML+=`<tr><td colspan="15" style="text-align:center;padding:8px;background:#fff8e1;color:#854f0b;font-size:11px;font-weight:600">⚠️ Mostrando 500 de ${fmt(data.length)}. Usa los filtros para reducir.</td></tr>`;
+}
 
-  if(tot > 500){
-    tbody.innerHTML += `<tr><td colspan="15" style="text-align:center;padding:10px;background:#fff8e1;color:#854f0b;font-size:11px;font-weight:600">⚠️ Mostrando los primeros 500 de ${fmt(tot)} registros. Usa los filtros para reducir la selección.</td></tr>`;
-  }
+function renderOlvidos(){
+  document.getElementById('tblTitle').textContent = '⚠️ Registros con marcas faltantes';
+  const data = filteredOlv;
+
+  // Stats
+  const p1 = data.filter(r=>r.cant===1).length;
+  const p2 = data.filter(r=>r.cant===2).length;
+  const p3p = data.filter(r=>r.cant>=3).length;
+  const pers = [...new Set(data.map(r=>r.n))].length;
+
+  document.getElementById('statsRow').innerHTML = `
+    <div class="stat-card"><div class="stat-icon si-warn">⚠️</div><div class="stat-info"><div class="val">${fmt(data.length)}</div><div class="lbl">Registros con olvido</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-azul">👤</div><div class="stat-info"><div class="val">${pers}</div><div class="lbl">Personas involucradas</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-naranja">1️⃣</div><div class="stat-info"><div class="val">${fmt(p1)}</div><div class="lbl">1 marca faltante</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-naranja">2️⃣</div><div class="stat-info"><div class="val">${fmt(p2)}</div><div class="lbl">2 marcas faltantes</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-rojo">🚨</div><div class="stat-info"><div class="val">${fmt(p3p)}</div><div class="lbl">3 o más faltantes</div></div></div>`;
+
+  // Summary cards
+  const porPersona = {};
+  data.forEach(r => {
+    if(!porPersona[r.n]) porPersona[r.n]={cnt:0,dept:r.d};
+    porPersona[r.n].cnt++;
+  });
+  const topPersonas = Object.entries(porPersona).sort((a,b)=>b[1].cnt-a[1].cnt).slice(0,5);
+
+  const porMarca = {};
+  data.forEach(r => r.f.forEach(m => { porMarca[m]=(porMarca[m]||0)+1; }));
+
+  document.getElementById('olvidosGrid').innerHTML = `
+    <div class="olvido-card">
+      <h4>🏆 Top 5 personas con más olvidos</h4>
+      <div class="olvido-top">
+        ${topPersonas.map(([n,v])=>`<div class="olvido-top-row"><span>${n}</span><span>${v} días</span></div>`).join('')}
+      </div>
+    </div>
+    <div class="olvido-card">
+      <h4>📊 Marcas más olvidadas</h4>
+      <div class="olvido-top">
+        ${Object.entries(porMarca).sort((a,b)=>b[1]-a[1]).map(([m,v])=>`<div class="olvido-top-row"><span>${m}</span><span>${fmt(v)}</span></div>`).join('')}
+      </div>
+    </div>`;
+
+  document.getElementById('tblCount').textContent = fmt(data.length)+' registros';
+  document.getElementById('theadRow').innerHTML = `<tr>
+    <th class="sortable" onclick="sortBy('fecha')">Fecha ↕</th>
+    <th class="sortable" onclick="sortBy('dia')">Día ↕</th>
+    <th class="sortable" onclick="sortBy('n')">Empleado ↕</th>
+    <th>Departamento</th>
+    <th class="center">Entrada Mañana</th>
+    <th class="center">Salida Mañana</th>
+    <th class="center">Entrada Tarde</th>
+    <th class="center">Salida Tarde</th>
+    <th class="center sortable" onclick="sortBy('cant')">Marcas faltantes ↕</th>
+    <th>¿Cuáles faltan?</th>
+    <th class="center">Ver empleado</th>
+  </tr>`;
+
+  const shown = data.slice(0,500);
+  const tbody = document.getElementById('tbody');
+  if(!data.length){ tbody.innerHTML=`<tr><td colspan="11" style="text-align:center;padding:40px;color:#aaa">No hay registros con marcas faltantes para los filtros seleccionados</td></tr>`; return; }
+
+  tbody.innerHTML = shown.map(r => {
+    const dc = DEPT_COLORS[r.d]||'b-gray';
+    const trClass = r.cant>=3 ? 'critico-row' : 'olvido-row';
+    return `<tr class="${trClass}">
+      <td><strong>${r.fecha}</strong></td>
+      <td>${r.dia||'—'}</td>
+      <td style="font-weight:600;min-width:150px">${r.n}</td>
+      <td><span class="badge ${dc}">${r.d}</span></td>
+      <td class="center">${horaMiss(r.em)}</td>
+      <td class="center">${horaMiss(r.sm)}</td>
+      <td class="center">${horaMiss(r.et)}</td>
+      <td class="center">${horaMiss(r.st)}</td>
+      <td class="center"><span class="badge ${r.cant>=3?'b-red':r.cant===2?'b-amber':'b-warn'}">${r.cant} faltante${r.cant>1?'s':''}</span></td>
+      <td style="font-size:10px;color:#a32d2d;font-weight:600">${r.f.join(', ')}</td>
+      <td class="center"><button onclick="showPanel('${encodeURIComponent(r.n)}')" style="background:var(--azul);color:#fff;border:none;border-radius:8px;padding:3px 9px;font-size:10px;cursor:pointer;font-weight:600">Ver</button></td>
+    </tr>`;
+  }).join('');
+  if(data.length>500) tbody.innerHTML+=`<tr><td colspan="11" style="text-align:center;padding:8px;background:#fff8e1;color:#854f0b;font-size:11px;font-weight:600">⚠️ Mostrando 500 de ${fmt(data.length)}. Usa los filtros para reducir.</td></tr>`;
 }
 
 function showPanel(encodedName){
   const name = decodeURIComponent(encodedName);
-  const personData = FULL_DATA.filter(r => r.n === name).sort((a,b) => a.fecha.localeCompare(b.fecha));
-  const totMm = personData.reduce((s,r)=>s+r.mm,0);
-  const totMt = personData.reduce((s,r)=>s+r.mt,0);
-  const totTt = personData.reduce((s,r)=>s+r.tt,0);
-  const retMa = personData.filter(r=>r.rm).length;
-  const retTa = personData.filter(r=>r.rt).length;
-  const dept = personData[0]?.d || '';
+  const personData = FULL_DATA.filter(r=>r.n===name).sort((a,b)=>a.fecha.localeCompare(b.fecha));
+  const olvData = SIN_MARCA.filter(r=>r.n===name);
+  const totMm=personData.reduce((s,r)=>s+r.mm,0);
+  const totMt=personData.reduce((s,r)=>s+r.mt,0);
+  const totTt=personData.reduce((s,r)=>s+r.tt,0);
+  const dept=personData[0]?.d||'';
 
-  const rows500 = personData.slice(0,200);
-  const body = `
+  document.getElementById('panelBody').innerHTML = `
     <div class="pp-name">${name}</div>
     <div class="pp-dept">${dept}</div>
     <div class="pp-stat"><span>Total registros</span><span>${personData.length}</span></div>
-    <div class="pp-stat"><span>Días con tardío</span><span>${personData.filter(r=>r.tt>0).length}</span></div>
+    <div class="pp-stat"><span>Días con tardío</span><span style="color:#e24b4a">${personData.filter(r=>r.tt>0).length}</span></div>
+    <div class="pp-stat"><span>Total min tardíos</span><span style="color:#e24b4a;font-weight:700">${fmt(totTt)} min</span></div>
     <div class="pp-stat"><span>Min tardío mañana</span><span style="color:#e24b4a">${fmt(totMm)} min</span></div>
     <div class="pp-stat"><span>Min tardío tarde</span><span style="color:#e24b4a">${fmt(totMt)} min</span></div>
-    <div class="pp-stat"><span>Total min tardíos</span><span style="color:#e24b4a;font-size:16px">${fmt(totTt)} min</span></div>
-    <div class="pp-stat"><span>Retardos mañana</span><span>${retMa} ocurrencias</span></div>
-    <div class="pp-stat"><span>Retardos tarde</span><span>${retTa} ocurrencias</span></div>
-    <div class="pp-subtitle">📅 Historial de asistencia</div>
+    <div class="pp-stat"><span>⚠️ Días con olvido de marca</span><span style="color:#856404;font-weight:700">${olvData.length} días</span></div>
+    <div class="pp-subtitle">📅 Historial completo</div>
     <table class="pp-mini-tbl">
-      <thead style="background:#f0f4fa">
-        <tr>
-          <th style="padding:4px 6px;text-align:left;font-size:10px;color:var(--azul)">Fecha</th>
-          <th style="padding:4px 6px;text-align:center;font-size:10px;color:var(--azul)">Ent. M</th>
-          <th style="padding:4px 6px;text-align:center;font-size:10px;color:var(--azul)">Ent. T</th>
-          <th style="padding:4px 6px;text-align:center;font-size:10px;color:var(--azul)">Min</th>
-        </tr>
-      </thead>
+      <thead><tr>
+        <th>Fecha</th><th>Ent.M</th><th>Sal.M</th><th>Ent.T</th><th>Sal.T</th><th>Min</th>
+      </tr></thead>
       <tbody>
-        ${rows500.map(r => `<tr style="${r.tt>0?'background:#fff8f8':''}">
-          <td>${r.fecha}<br><small style="color:#888">${r.dia}</small></td>
-          <td style="text-align:center;font-family:monospace;font-size:10px">${r.em||'—'}</td>
-          <td style="text-align:center;font-family:monospace;font-size:10px">${r.et||'—'}</td>
-          <td style="text-align:center;font-weight:700;color:${r.tt>0?'#e24b4a':'#3b6d11'}">${r.tt>0?r.tt:'✓'}</td>
-        </tr>`).join('')}
+        ${personData.slice(0,200).map(r=>{
+          const hasIssue = !r.em||!r.sm||!r.et||!r.st;
+          const c = v => v ? `<span style="font-family:monospace;font-size:9px">${v.slice(0,5)}</span>` : `<span style="color:#e24b4a;font-weight:700;font-size:9px">✗</span>`;
+          return `<tr class="${hasIssue?'has-issue':''}">
+            <td>${r.fecha}<br><small style="color:#888">${r.dia}</small></td>
+            <td class="center">${c(r.em)}</td>
+            <td class="center">${c(r.sm)}</td>
+            <td class="center">${c(r.et)}</td>
+            <td class="center">${c(r.st)}</td>
+            <td class="center" style="font-weight:700;color:${r.tt>0?'#e24b4a':'#3b6d11'}">${r.tt>0?r.tt:'✓'}</td>
+          </tr>`;
+        }).join('')}
       </tbody>
-    </table>
-  `;
+    </table>`;
 
-  document.getElementById('panelBody').innerHTML = body;
   document.getElementById('personaPanel').classList.add('open');
   document.getElementById('overlay').classList.add('open');
 }
@@ -419,35 +531,34 @@ function closePanel(){
 }
 
 function clearFilters(){
-  ['fMes','fDia','fDept','fPers','fTardio'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('fDesde').value = '';
-  document.getElementById('fHasta').value = '';
+  ['fMes','fDia','fDept','fPers','fTardio','fOlvido'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fDesde').value='';
+  document.getElementById('fHasta').value='';
   applyFilters();
 }
 
 function exportCSV(){
-  const f = getFilters();
-  const data = filtered.length > 0 ? filtered : FULL_DATA;
-  const headers = ['Fecha','Día','Empleado','Departamento','Entrada Mañana','Salida Mañana','Entrada Tarde','Salida Tarde','Retardo Mañana','Retardo Tarde','Min Retardo Mañana','Min Retardo Tarde','Total Min Tardío','Hora Extra Sábado'];
-  const rows = data.map(r => [
-    r.fecha, r.dia, `"${r.n}"`, r.d,
-    r.em||'', r.sm||'', r.et||'', r.st||'',
-    r.rm?'Sí':'No', r.rt?'Sí':'No',
-    r.mm, r.mt, r.tt, r.es?'Sí':'No'
-  ].join(','));
-  const csv = [headers.join(','), ...rows].join('\n');
-  const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'registros_tiempo_tardio.csv';
+  const data = currentTab==='asistencia' ? filteredAsis : filteredOlv;
+  let headers, rows;
+  if(currentTab==='asistencia'){
+    headers=['Fecha','Día','Empleado','Departamento','Entrada Mañana','Salida Mañana','Entrada Tarde','Salida Tarde','Ret.Mañana','Ret.Tarde','Min Mañana','Min Tarde','Total Min','H.Extra Sáb'];
+    rows=data.map(r=>[r.fecha,r.dia,`"${r.n}"`,r.d,r.em||'',r.sm||'',r.et||'',r.st||'',r.rm?'Sí':'No',r.rt?'Sí':'No',r.mm,r.mt,r.tt,r.es?'Sí':'No'].join(','));
+  } else {
+    headers=['Fecha','Día','Empleado','Departamento','Entrada Mañana','Salida Mañana','Entrada Tarde','Salida Tarde','Cant. Faltantes','Marcas Faltantes'];
+    rows=data.map(r=>[r.fecha,r.dia,`"${r.n}"`,r.d,r.em||'FALTA',r.sm||'FALTA',r.et||'FALTA',r.st||'FALTA',r.cant,`"${r.f.join(', ')}"`].join(','));
+  }
+  const csv=[headers.join(','),...rows].join('\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download=`registros_${currentTab}.csv`;
   a.click(); URL.revokeObjectURL(url);
 }
 
-['fMes','fDia','fDept','fPers','fTardio','fDesde','fHasta'].forEach(id =>
-  document.getElementById(id).addEventListener('change', applyFilters)
+['fMes','fDia','fDept','fPers','fTardio','fOlvido','fDesde','fHasta'].forEach(id=>
+  document.getElementById(id).addEventListener('change',applyFilters)
 );
 
-// Initial load
 applyFilters();
 </script>
 </body>
