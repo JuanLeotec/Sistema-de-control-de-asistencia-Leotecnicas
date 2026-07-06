@@ -5,7 +5,13 @@
 // ============================================================
 import { fmt } from '../core/utils.js';
 
-const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
+const MESES_CANON = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const mesesConDatos = new Set();
+Object.values(window.CAL_DATA || {}).forEach(recs => {
+  Object.keys(recs).forEach(fecha => mesesConDatos.add(parseInt(fecha.slice(5,7),10) - 1));
+});
+const MESES_IDX = [...mesesConDatos].sort((a,b)=>a-b);
+const MESES = MESES_CANON;
 const DHDR = ['L','M','X','J','V','S','D'];
 
 let calTurno = 'total';
@@ -105,7 +111,7 @@ function renderCal(){
 
   const container = document.getElementById('calMonths');
   container.innerHTML = '';
-  const mesesRender = mesFlt !== '' ? [parseInt(mesFlt)] : [0,1,2,3,4,5];
+  const mesesRender = mesFlt !== '' ? [parseInt(mesFlt)] : MESES_IDX;
   container.style.gridTemplateColumns = mesesRender.length === 1 ? '1fr' : mesesRender.length <= 2 ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
 
   mesesRender.forEach(m => {
@@ -200,7 +206,7 @@ function skeleton(){
         </div>
       </div>
       <div class="filter-group" style="flex:0 0 180px"><label>Mes</label>
-        <select id="calMes"><option value="">Todos (Ene–Jun)</option>${MESES.map((m,i)=>`<option value="${i}">${m}</option>`).join('')}</select>
+        <select id="calMes"><option value="">Todos</option>${MESES_IDX.map(i=>`<option value="${i}">${MESES[i]}</option>`).join('')}</select>
       </div>
     </div>
 

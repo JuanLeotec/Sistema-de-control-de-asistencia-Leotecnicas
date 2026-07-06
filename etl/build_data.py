@@ -33,6 +33,12 @@ def fmt_date(d):
 
 ULTIMO_SABADO = fmt_date(df[df['Día de la semana']==5]['Fecha'].max())
 
+# ---- Días especiales de jornada solo mañana (7am-12m, sin turno de tarde) ----
+# Añade aquí cualquier fecha 'YYYY-MM-DD' en la que solo se trabajó en la mañana.
+JORNADAS_SOLO_MANANA = {
+    '2026-07-03',  # Viernes: solo se trabajó de 7am a 12m, no hubo turno de tarde
+}
+
 # ---- Horario oficial vigente ----
 LIMITE_MANANA = 7*60          # 07:00 AM en minutos desde medianoche
 LIMITE_TARDE = 13*60 + 30     # 01:30 PM en minutos desde medianoche
@@ -47,7 +53,9 @@ for _, r in df.iterrows():
     n = r['Nombre Completo']
     dow = int(r['Día de la semana'])
     dia = DIAS[dow]
+    fecha_str = fmt_date(r['Fecha'])
     es_sabado = (dia == 'Sábado')
+    es_solo_manana = es_sabado or (fecha_str in JORNADAS_SOLO_MANANA)
 
     em_min = minutos_desde_medianoche(r['Entrada mañana'])
     et_min = minutos_desde_medianoche(r['Entrada tarde'])
@@ -55,8 +63,8 @@ for _, r in df.iterrows():
     mm = max(0, em_min - LIMITE_MANANA) if em_min is not None else 0
     rm = 1 if mm > 0 else 0
 
-    if es_sabado:
-        # Sábado: turno corto único (mañana), no aplica jornada de tarde
+    if es_solo_manana:
+        # Turno único de mañana (sábado, o día especial señalado): no aplica jornada de tarde
         mt = 0
         rt = 0
     else:
@@ -81,17 +89,19 @@ print('FULL_DATA records:', len(FULL_DATA))
 # ---- SIN_MARCA ----
 # Los sábados se excluyen por completo: el turno corto (solo entrada mañana) hace que
 # salida mañana / entrada tarde / salida tarde falten sistemáticamente, y no es un olvido real
-# sino una jornada distinta. Además, el sábado más reciente puede estar con captura incompleta
-# al momento de la actualización (se toma el lunes siguiente).
+# sino una jornada distinta. Lo mismo aplica a los días señalados en JORNADAS_SOLO_MANANA
+# (ese día solo hubo turno de mañana, así que no se evalúa la tarde).
 SIN_MARCA = []
 for rec in FULL_DATA:
+    es_solo_manana = (rec['dia'] == 'Sábado') or (rec['fecha'] in JORNADAS_SOLO_MANANA)
     if rec['dia'] == 'Sábado':
         continue
     missing = []
     if not rec['em']: missing.append('Entrada Mañana')
     if not rec['sm']: missing.append('Salida Mañana')
-    if not rec['et']: missing.append('Entrada Tarde')
-    if not rec['st']: missing.append('Salida Tarde')
+    if not es_solo_manana:
+        if not rec['et']: missing.append('Entrada Tarde')
+        if not rec['st']: missing.append('Salida Tarde')
     if missing:
         SIN_MARCA.append({
             'fecha': rec['fecha'], 'dia': rec['dia'], 'mes': rec['mes'],

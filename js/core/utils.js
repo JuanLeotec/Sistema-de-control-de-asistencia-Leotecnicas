@@ -67,7 +67,9 @@ export function deptChipClass(dept){
   return map[dept] || 'chip-transformadores';
 }
 
-export const MESES_ORD = ['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
+const MESES_CANON = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const mesesPresentes = new Set((window.DASHBOARD_DATA || []).map(r => r.mes));
+export const MESES_ORD = MESES_CANON.filter(m => mesesPresentes.has(m));
 
 /** Pequeño helper de "toast" para confirmaciones (Configuración → recargar/exportar). */
 export function showToast(msg){
