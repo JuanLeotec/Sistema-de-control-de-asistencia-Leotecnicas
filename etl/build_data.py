@@ -37,6 +37,7 @@ ULTIMO_SABADO = fmt_date(df[df['Día de la semana']==5]['Fecha'].max())
 # Añade aquí cualquier fecha 'YYYY-MM-DD' en la que solo se trabajó en la mañana.
 JORNADAS_SOLO_MANANA = {
     '2026-07-03',  # Viernes: solo se trabajó de 7am a 12m, no hubo turno de tarde
+    '2026-07-07',  # Martes: solo se trabajó hasta las 12m, no hubo turno de tarde
 }
 
 # ---- Horario oficial vigente ----
@@ -76,7 +77,8 @@ for _, r in df.iterrows():
         'fecha': fmt_date(r['Fecha']),
         'dia': dia,
         'mes': MESES[r['Fecha'].month - 1],
-        'em': tstr(r['Entrada mañana']), 'sm': tstr(r['Salida mañana']),
+        'em': tstr(r['Entrada mañana']),
+        'sm': tstr(r['Salida mañana']) or ('12:00' if es_sabado and pd.notna(r['Entrada mañana']) else None),
         'et': tstr(r['Entrada tarde']), 'st': tstr(r['Salida tarde']),
         'rm': rm, 'rt': rt,
         'mm': float(mm), 'mt': float(mt),
