@@ -55,6 +55,6 @@ export function applySettings(){
 
 export const appMeta = {
   fuente: 'BaseDatosPowerBI.xlsx',
-  ultimaActualizacion: '03/08/2026 08:30 a.m.',
+  ultimaActualizacion: '10/08/2026 08:30 a.m.',
   version: '2.0.0'
 };

@@ -46,6 +46,11 @@ JORNADAS_SOLO_MANANA = {
     '2026-07-07',  # Martes: solo se trabajó hasta las 12m, no hubo turno de tarde
 }
 
+# ---- Días festivos: se excluyen por completo de "Marcas Faltantes" (no se evalúa ninguna marca) ----
+DIAS_FESTIVOS = {
+    '2026-08-07',  # Viernes festivo
+}
+
 # ---- Horario oficial vigente ----
 # A partir del 2026-07-16 cambia el horario de entrada de la mañana (7:00 -> 7:30).
 # Los registros anteriores a esa fecha se evalúan con el horario antiguo.
@@ -111,12 +116,13 @@ print('FULL_DATA records:', len(FULL_DATA))
 # Los sábados se excluyen por completo: el turno corto (solo entrada mañana) hace que
 # salida mañana / entrada tarde / salida tarde falten sistemáticamente, y no es un olvido real
 # sino una jornada distinta. Lo mismo aplica a los días señalados en JORNADAS_SOLO_MANANA
-# (ese día solo hubo turno de mañana, así que no se evalúa la tarde).
+# (ese día solo hubo turno de mañana, así que no se evalúa la tarde). Los días en DIAS_FESTIVOS
+# se excluyen por completo (no se evalúa ninguna marca, sea cual sea el patrón ese día).
 SIN_MARCA = []
 for rec in FULL_DATA:
-    es_solo_manana = (rec['dia'] == 'Sábado') or (rec['fecha'] in JORNADAS_SOLO_MANANA)
-    if rec['dia'] == 'Sábado':
+    if rec['dia'] == 'Sábado' or rec['fecha'] in DIAS_FESTIVOS:
         continue
+    es_solo_manana = (rec['fecha'] in JORNADAS_SOLO_MANANA)
     missing = []
     if not rec['em']: missing.append('Entrada Mañana')
     if not rec['sm']: missing.append('Salida Mañana')
