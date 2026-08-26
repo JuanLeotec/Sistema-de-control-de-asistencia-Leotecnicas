@@ -51,6 +51,12 @@ DIAS_FESTIVOS = {
     '2026-08-07',  # Viernes festivo
 }
 
+# ---- Empleados exentos de retardo: se registran sus horas de llegada normalmente,
+# pero nunca se cuentan como tardío (ni en minutos ni en el indicador Sí/No). ----
+EMPLEADOS_SIN_RETARDO = {
+    'Juan Diego Gomez Lopez',
+}
+
 # ---- Horario oficial vigente ----
 # A partir del 2026-07-16 cambia el horario de entrada de la mañana (7:00 -> 7:30).
 # Los registros anteriores a esa fecha se evalúan con el horario antiguo.
@@ -95,6 +101,10 @@ for _, r in df.iterrows():
     else:
         mt = max(0, et_min - LIMITE_TARDE) if et_min is not None else 0
         rt = 1 if mt > 0 else 0
+
+    if n in EMPLEADOS_SIN_RETARDO:
+        # Se registran las horas de llegada tal cual, pero nunca cuentan como tardío
+        mm = 0; rm = 0; mt = 0; rt = 0
 
     FULL_DATA.append({
         'n': n, 'd': dept_map[n],
